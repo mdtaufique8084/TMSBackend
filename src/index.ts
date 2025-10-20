@@ -14,11 +14,8 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
 
-//  Only start listening locally
-if (process.env.NODE_ENV !== "production") {
-  const PORT = process.env.PORT || 5000;
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-}
+app.get("/", (req, res) => {
+  res.send("Backend deployed successfully 🚀");
+});
 
-//  Export for Vercel
-module.exports = app;
+export default app; 
