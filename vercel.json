@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "functions": {
-    "api/index.ts": {
-      "runtime": "nodejs20.x",
-      "memory": 512,
-      "maxDuration": 10
-    }
-  },
+  "builds": [
+    { "src": "api/index.ts", "use": "@vercel/node@2.15.10" }
+  ],
   "routes": [
     { "src": "/", "dest": "/api/index.ts" },
     { "src": "/api/(.*)", "dest": "/api/index.ts" }
