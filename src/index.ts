@@ -3,12 +3,11 @@ import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes";
 import taskRoutes from "./routes/taskRoutes";
-import { PrismaClient } from "@prisma/client";
+// Prisma client is provided via ../config/db for serverless safety
 
 dotenv.config();
 
 export const app = express();
-const prisma = new PrismaClient();
 
 app.use(cors());
 app.use(express.json());

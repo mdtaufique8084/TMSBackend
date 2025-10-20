@@ -1,18 +1,16 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "src/index.ts",
-      "use": "@vercel/node"
+  "functions": {
+    "api/index.ts": {
+      "runtime": "nodejs20.x",
+      "memory": 512,
+      "maxDuration": 10
     }
-  ],
+  },
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/src/index.ts"
-    }
+    { "src": "/", "dest": "/api/index.ts" },
+    { "src": "/api/(.*)", "dest": "/api/index.ts" }
   ],
   "installCommand": "npm install",
-  "buildCommand": "npm run vercel-build",
-  "outputDirectory": "."
+  "buildCommand": "npm run vercel-build"
 }
